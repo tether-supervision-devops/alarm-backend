@@ -36,10 +36,11 @@ app.post("/update-alarm-user", async (req, res) => {
     });
 
     let result;
+    const text = await response.text();
     try {
-      result = await response.json();
+      result = JSON.parse(text);
     } catch {
-      result = await response.text();
+      result = text; // fallback to raw string or empty
     }
 
     if (!response.ok) {
