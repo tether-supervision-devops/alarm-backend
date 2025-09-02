@@ -18,6 +18,9 @@ app.post("/update-alarm-user", async (req, res) => {
 
     const url = `https://api.adalo.com/v0/apps/${process.env.ADALO_APP_ID}/collections/${process.env.ADALO_USERS_COLLECTION}/${userId}`;
 
+    console.log("🔑 Using API key prefix:", process.env.ADALO_API_KEY?.slice(0, 6));
+    console.log("📦 Full URL:", url);
+
     const body = {
       "Alarm Group": [alarmGroupId],
       "Meeting Number": meetingId,
