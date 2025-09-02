@@ -35,7 +35,13 @@ app.post("/update-alarm-user", async (req, res) => {
       body: JSON.stringify(body),
     });
 
-    const result = await response.json();
+    let result;
+    try {
+      result = await response.json();
+    } catch {
+      result = await response.text();
+    }
+
     if (!response.ok) {
       return res.status(500).json({ ok: false, error: result });
     }
