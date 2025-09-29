@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.post("/update-alarm-user", async (req, res) => {
   try {
-    const { userId, alarmGroupId, meetingId } = req.body || {};
+    const { userId, alarmGroupId, meetingId, adminEmail } = req.body || {};
 
     if (!userId || !alarmGroupId) {
       return res.status(400).json({ ok: false, error: "Missing params" });
@@ -24,6 +24,7 @@ app.post("/update-alarm-user", async (req, res) => {
     const body = {
       "Alarm Group": [alarmGroupId],
       "Meeting Number": meetingId,
+      "Admin Email": adminEmail,
     };
 
     const response = await fetch(url, {
