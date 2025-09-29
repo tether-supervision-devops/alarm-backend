@@ -24,7 +24,7 @@ app.post("/update-alarm-user", async (req, res) => {
     const body = {
       "Alarm Group": [alarmGroupId],
       "Meeting Number": meetingId,
-      "Admin Email": adminEmail,
+      "Zoom Email": adminEmail,
     };
 
     const response = await fetch(url, {
